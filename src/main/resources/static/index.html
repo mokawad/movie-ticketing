@@ -3,7 +3,7 @@
 <head>
 	<style>
 	body{
-    background-color: #d3d3d3; 
+    background-color: white; 
     font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-size: 16px;
     font-style: normal;
@@ -29,20 +29,43 @@
     
     .logo{
     	font-family: "Impact", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-    	font-size: 34px;
+    	font-size: 55px;
     	font-style: normal;
     	font-variant: normal;
     	color: white;
     	text-align: center;
+    	}
     
-    h2 {
-        font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-        font-size: 24px;
-    } 
+    .wrapper{
+    	font-family: "Verdana", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    	font-size: 40px;
+    	font-style: normal;
+    	font-weight: bold;
+    	color: gray;
+    	border: solid;
+    	border-color: gray;
+    	border-width: 0px 0px 2px 0px;
+    	text-align: center;
+    	}
+    	
+    h1{
+    	background-color: white; 
+    	font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    	font-size: 16px;
+    	font-style: normal;
+    	font-variant: normal;
+    	margin-top: 15px;
+    	margin-bottom: 0px;
+    	width: 100%;
+    	}
 		
 	</style>
+	
+	<meta charset="utf-8">
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<div class="banner">
@@ -50,6 +73,30 @@
 		<p>CSUMB Moviehouse</p>
 		</div>
 	</div>
+	<div class="wrapper">
+		<p>Now Playing</p>
+	</div>
+	<h1 align="center">Pick a Movie!
+
+    <form>
+         <select name="movieId">
+           <option value="-1"> - Select Movie -</option>  
+         </select>
+        <input type="submit" value="Get Movie Info and showtimes!"/>	
+	</form><br/>
+	</h1>
+	<div class="wrapper">
+		<p>Coming Soon</p>
+	</div>
+	<h1 align="center">Pick a Movie!
+
+    <form>
+         <select name="movieId">
+           <option value="-1"> - Select Movie -</option>  
+         </select>
+        <input type="submit" value="Get Movie Info!"/>	
+	</form><br/>
+	</h1>
     <p>Get your greeting <a href="/greeting">here</a></p>
 </body>
 </html>
