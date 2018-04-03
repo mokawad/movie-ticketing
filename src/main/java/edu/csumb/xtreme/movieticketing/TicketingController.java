@@ -26,11 +26,16 @@ public class TicketingController {
         return "greeting";
     }
 
-    @GetMapping("/list")
+   @GetMapping("/list")
     public String home(Model model) {
         model.addAttribute("movies", movieDao.findAll());
         model.addAttribute("bookings", bookingDao.findAll());
         return "list";
     }
-
+    
+    @GetMapping("/index")
+    public String index(Model model) {
+        model.addAttribute("movies", movieDao.findAll());
+        return "index";
+    }
 }
