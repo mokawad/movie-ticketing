@@ -31,6 +31,7 @@ public class TicketingController {
         model.addAttribute("movies", movieDao.findAll());
         model.addAttribute("bookings", bookingDao.findAll());
         return "list";
+        
     }
 
 }
