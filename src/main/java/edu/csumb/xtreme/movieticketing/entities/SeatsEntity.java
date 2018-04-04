@@ -2,6 +2,7 @@ package edu.csumb.xtreme.movieticketing.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,7 +12,7 @@ import javax.persistence.OneToOne;
 public class SeatsEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne
     private SeatEntity seat;
@@ -19,4 +20,27 @@ public class SeatsEntity {
     @JoinColumn(name = "booking_id", nullable = false)
     private BookingEntity booking;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public SeatEntity getSeat() {
+        return seat;
+    }
+
+    public void setSeat(SeatEntity seat) {
+        this.seat = seat;
+    }
+
+    public BookingEntity getBooking() {
+        return booking;
+    }
+
+    public void setBooking(BookingEntity booking) {
+        this.booking = booking;
+    }
 }
