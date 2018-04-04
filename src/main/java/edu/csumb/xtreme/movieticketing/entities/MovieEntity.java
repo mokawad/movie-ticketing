@@ -18,6 +18,9 @@ public class MovieEntity {
     private String director;
     private Date releaseDate;
 
+    public int getId() {
+      return id;
+    }
     public String getName() {
         return name;
     }
