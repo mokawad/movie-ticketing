@@ -74,13 +74,92 @@
 		</div>
 	</div>
 
-
-<div class="wrapper">
-    <img th:src="@{/images/0.jpeg}" style="
-    height: 400px;
-        width: 300px;"/>
-  <p><span th:text="${movie.getName()}">Name</span></p>
-</div>
+<th:block th:switch="${movie.getId()}">
+	<div th:case=0 class="wrapper">
+		<img th:src="@{/images/0.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=1 class="wrapper">
+		<img th:src="@{/images/1.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=2 class="wrapper">
+		<img th:src="@{/images/2.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=3 class="wrapper">
+		<img th:src="@{/images/3.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=4 class="wrapper">
+		<img th:src="@{/images/4.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=5 class="wrapper">
+		<img th:src="@{/images/5.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=6 class="wrapper">
+		<img th:src="@{/images/6.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=7 class="wrapper">
+		<img th:src="@{/images/7.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=8 class="wrapper">
+		<img th:src="@{/images/8.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=9 class="wrapper">
+		<img th:src="@{/images/9.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=10 class="wrapper">
+		<img th:src="@{/images/10.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=11 class="wrapper">
+		<img th:src="@{/images/11.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=12 class="wrapper">
+		<img th:src="@{/images/12.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+	<div th:case=13 class="wrapper">
+		<img th:src="@{/images/13.jpg}" style="
+    		height: 400px;
+        	width: 300px;"/>
+  		<p><span th:text="${movie.getName()}">Name</span></p>
+	</div>
+</th:block>
 <h1 align="center">
 
 
