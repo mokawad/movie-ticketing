@@ -82,8 +82,9 @@
     	<select>
         	<option value="">Select Movie</option>
          		<option th:each="movie : ${movies}"
-           			th:value="${movie.getId()}"
-           			th:text="${movie.getName()}"/option>
+         			th:if="${movie.isNowPlaying()}"
+           				th:value="${movie.getId()}"
+           				th:text="${movie.getName()}"/option>
         </select>
 		<input type="submit" value="Get Movie Info and showtimes!"/>
 
@@ -95,11 +96,17 @@
 	<h1 align="center">Pick a Movie!
 
     <form>
-         <select name="movieId">
-           <option value="-1"> - Select Movie -</option>  
-         </select>
-        <input type="submit" value="Get Movie Info!"/>	
+    	<select>
+        	<option value="">Select Movie</option>
+         		<option th:each="movie : ${movies}"
+         			th:if="${movie.isComingSoon()}"
+           				th:value="${movie.getId()}"
+           				th:text="${movie.getName()}"/option>
+        </select>
+		<input type="submit" value="Get Movie Info and showtimes!"/>
+
 	</form><br/>
+    
 	</h1>
     <p>Get your greeting <a href="/greeting">here</a></p>
 </body>

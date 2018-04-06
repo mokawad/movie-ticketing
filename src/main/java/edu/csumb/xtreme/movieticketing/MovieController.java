@@ -21,10 +21,10 @@ public class MovieController {
     
 @GetMapping("/movie")
 public String movie(
-    @RequestParam(name = "id", required = true, defaultValue = "0") int id,
+    @RequestParam(name = "id", required = true, defaultValue = "1") int id,
     Model model) {
     model.addAttribute("movie", movieDao.findAll().get(id));
-    model.addAttribute("bookings", bookingDao.findAll().get(id));
+    //model.addAttribute("bookings", bookingDao.findAll().get(id));
     //model.addAllAttributes(movieDao);
     return "movie";
 }

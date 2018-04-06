@@ -1,6 +1,6 @@
 package edu.csumb.xtreme.movieticketing.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +16,7 @@ public class MovieEntity {
     private String rating;
     private String genre;
     private String director;
-    private Date releaseDate;
+    private LocalDate releaseDate;
 
     public int getId() {
       return id;
@@ -61,11 +61,29 @@ public class MovieEntity {
         this.director = director;
     }
 
-    public Date getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
+    }
+    
+    // Method to determine if movie is NowPlaying
+    public boolean isNowPlaying() {
+      LocalDate currentDate = LocalDate.now();
+      if(this.releaseDate.isBefore(currentDate))
+        return true;
+      else
+        return false;
+    }
+    
+    // Method to determing if moview is ComingSoon
+    public boolean isComingSoon() {
+        LocalDate currentDate = LocalDate.now();
+        if(this.releaseDate.isAfter(currentDate))
+          return true;
+        else
+          return false;
     }
 }
