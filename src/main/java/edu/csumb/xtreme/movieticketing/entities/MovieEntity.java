@@ -18,10 +18,13 @@ public class MovieEntity {
     private String genre;
     private String director;
     private LocalDate releaseDate;
+    private MovieEntity() {
+    }
 
     public int getId() {
-      return id;
+        return id;
     }
+
     public String getName() {
         return name;
     }
@@ -69,22 +72,62 @@ public class MovieEntity {
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
-    
-    // Method to determine if movie is NowPlaying
-    public boolean isNowPlaying() {
-      LocalDate currentDate = LocalDate.now();
-      if(this.releaseDate.isBefore(currentDate))
-        return true;
-      else
-        return false;
-    }
-    
-    // Method to determing if moview is ComingSoon
-    public boolean isComingSoon() {
-        LocalDate currentDate = LocalDate.now();
-        if(this.releaseDate.isAfter(currentDate))
-          return true;
-        else
-          return false;
+
+    public static final class MovieEntityBuilder {
+
+        private String name;
+        private int runtime;
+        private String rating;
+        private String genre;
+        private String director;
+        private LocalDate releaseDate;
+
+        private MovieEntityBuilder() {
+        }
+
+        public static MovieEntityBuilder aMovieEntity() {
+            return new MovieEntityBuilder();
+        }
+
+        public MovieEntityBuilder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public MovieEntityBuilder withRuntime(int runtime) {
+            this.runtime = runtime;
+            return this;
+        }
+
+        public MovieEntityBuilder withRating(String rating) {
+            this.rating = rating;
+            return this;
+        }
+
+        public MovieEntityBuilder withGenre(String genre) {
+            this.genre = genre;
+            return this;
+        }
+
+        public MovieEntityBuilder withDirector(String director) {
+            this.director = director;
+            return this;
+        }
+
+        public MovieEntityBuilder withReleaseDate(LocalDate releaseDate) {
+            this.releaseDate = releaseDate;
+            return this;
+        }
+
+        public MovieEntity build() {
+            MovieEntity movieEntity = new MovieEntity();
+            movieEntity.name = name;
+            movieEntity.runtime = runtime;
+            movieEntity.rating = rating;
+            movieEntity.genre = genre;
+            movieEntity.director = director;
+            movieEntity.releaseDate = releaseDate;
+            return movieEntity;
+        }
     }
 }

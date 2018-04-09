@@ -1,6 +1,7 @@
 package edu.csumb.xtreme.movieticketing.dao;
 
 import edu.csumb.xtreme.movieticketing.entities.BookingEntity;
+import edu.csumb.xtreme.movieticketing.entities.BookingEntity.BookingEntityBuilder;
 import edu.csumb.xtreme.movieticketing.entities.SeatsEntity;
 import edu.csumb.xtreme.movieticketing.entities.ShowtimeEntity;
 import edu.csumb.xtreme.movieticketing.entities.ViewerEntity;
@@ -16,14 +17,22 @@ public class BookingService {
 
     public BookingEntity createBooking(ViewerEntity viewer, ShowtimeEntity showtimeEntity,
                                        List<SeatsEntity> seats) {
-        BookingEntity bookingEntity = new BookingEntity();
-        bookingEntity.setSeats(seats);
-        bookingEntity.setShowtime(showtimeEntity);
-        bookingEntity.setViewer(viewer);
-        return bookingDao.save(bookingEntity);
+        BookingEntityBuilder builder = BookingEntityBuilder.aBookingEntity();
+        builder.withSeats(seats)
+            .withShowtime(showtimeEntity)
+            .withViewer(viewer);
+        return bookingDao.save(builder.build());
     }
 
     public void deleteBooking(int id) {
         bookingDao.deleteById(id);
+    }
+
+    public void addSeats(int bookingId) {
+
+    }
+
+    public void removeSeats(int bookingId) {
+
     }
 }

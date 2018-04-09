@@ -19,13 +19,11 @@ public class SeatsEntity {
     @ManyToOne
     @JoinColumn(name = "booking_id", nullable = false)
     private BookingEntity booking;
+    private SeatsEntity() {
+    }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public SeatEntity getSeat() {
@@ -42,5 +40,28 @@ public class SeatsEntity {
 
     public void setBooking(BookingEntity booking) {
         this.booking = booking;
+    }
+
+    public static final class SeatsEntityBuilder {
+
+        private SeatEntity seat;
+
+        private SeatsEntityBuilder() {
+        }
+
+        public static SeatsEntityBuilder aSeatsEntity() {
+            return new SeatsEntityBuilder();
+        }
+
+        public SeatsEntityBuilder withSeat(SeatEntity seat) {
+            this.seat = seat;
+            return this;
+        }
+
+        public SeatsEntity build() {
+            SeatsEntity seatsEntity = new SeatsEntity();
+            seatsEntity.seat = seat;
+            return seatsEntity;
+        }
     }
 }

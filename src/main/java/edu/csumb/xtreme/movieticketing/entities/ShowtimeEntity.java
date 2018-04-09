@@ -17,6 +17,12 @@ public class ShowtimeEntity {
     private Float price;
     @OneToOne
     private MovieEntity movie;
+    private ShowtimeEntity() {
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public Date getTime() {
         return time;
@@ -40,5 +46,42 @@ public class ShowtimeEntity {
 
     public void setMovie(MovieEntity movie) {
         this.movie = movie;
+    }
+
+    public static final class ShowtimeEntityBuilder {
+
+        private Date time;
+        private Float price;
+        private MovieEntity movie;
+
+        private ShowtimeEntityBuilder() {
+        }
+
+        public static ShowtimeEntityBuilder aShowtimeEntity() {
+            return new ShowtimeEntityBuilder();
+        }
+
+        public ShowtimeEntityBuilder withTime(Date time) {
+            this.time = time;
+            return this;
+        }
+
+        public ShowtimeEntityBuilder withPrice(Float price) {
+            this.price = price;
+            return this;
+        }
+
+        public ShowtimeEntityBuilder withMovie(MovieEntity movie) {
+            this.movie = movie;
+            return this;
+        }
+
+        public ShowtimeEntity build() {
+            ShowtimeEntity showtimeEntity = new ShowtimeEntity();
+            showtimeEntity.time = time;
+            showtimeEntity.price = price;
+            showtimeEntity.movie = movie;
+            return showtimeEntity;
+        }
     }
 }

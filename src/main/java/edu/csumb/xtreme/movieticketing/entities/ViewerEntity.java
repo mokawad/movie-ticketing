@@ -12,6 +12,9 @@ public class ViewerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String username;
+    private ViewerEntity() {
+
+    }
 
     public int getId() {
         return id;
@@ -22,6 +25,30 @@ public class ViewerEntity {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+    }
+
+    public static final class ViewerEntityBuilder {
+
+        private int id;
+        private String username;
+
+        private ViewerEntityBuilder() {
+        }
+
+        public static ViewerEntityBuilder aViewerEntity() {
+            return new ViewerEntityBuilder();
+        }
+
+        public ViewerEntityBuilder withUsername(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public ViewerEntity build() {
+            ViewerEntity viewerEntity = new ViewerEntity();
+            viewerEntity.username = username;
+            viewerEntity.id = this.id;
+            return viewerEntity;
+        }
     }
 }

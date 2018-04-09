@@ -4,9 +4,12 @@ import edu.csumb.xtreme.movieticketing.dao.BookingDao;
 import edu.csumb.xtreme.movieticketing.dao.BookingService;
 import edu.csumb.xtreme.movieticketing.dao.ShowtimeDao;
 import edu.csumb.xtreme.movieticketing.dao.ViewerDao;
+import edu.csumb.xtreme.movieticketing.dao.ViewerService;
 import edu.csumb.xtreme.movieticketing.entities.BookingEntity;
 import edu.csumb.xtreme.movieticketing.entities.SeatEntity;
+import edu.csumb.xtreme.movieticketing.entities.SeatEntity.SeatEntityBuilder;
 import edu.csumb.xtreme.movieticketing.entities.SeatsEntity;
+import edu.csumb.xtreme.movieticketing.entities.SeatsEntity.SeatsEntityBuilder;
 import edu.csumb.xtreme.movieticketing.entities.ShowtimeEntity;
 import edu.csumb.xtreme.movieticketing.entities.ViewerEntity;
 import java.util.ArrayList;
@@ -31,13 +34,12 @@ public class BookingServiceTest {
 
     @Autowired
     BookingService bookingService;
+    private final ViewerService viewerService = new ViewerService();
 
     @Test
     public void createBooking() {
         long before = bookingDao.count();
-        ViewerEntity viewer = new ViewerEntity();
-        viewer.setUsername("TestViewer");
-        viewerDao.save(viewer);
+        ViewerEntity viewer = viewerService.createViewer("TestViewer");
         ShowtimeEntity showtimeEntity = showtimeDao.getOne(1);
         List<SeatsEntity> seatsEntity = new ArrayList<>();
         bookingService.createBooking(viewer, showtimeEntity, seatsEntity);
@@ -47,18 +49,14 @@ public class BookingServiceTest {
     @Test
     public void createBookingWithSeat() {
         long before = bookingDao.count();
-        ViewerEntity viewer = new ViewerEntity();
-        viewer.setUsername("TestViewer");
+        ViewerEntity viewer = viewerService.createViewer("TestViewer");
         viewerDao.save(viewer);
         ShowtimeEntity showtimeEntity = showtimeDao.getOne(1);
-        SeatEntity seatEntity = new SeatEntity();
-        seatEntity.setNumber(1);
-        seatEntity.setRow("A");
-
         List<SeatsEntity> seatsEntityList = new ArrayList<>();
-        SeatsEntity seatsEntity = new SeatsEntity();
-        seatsEntity.setSeat(seatEntity);
 
+        SeatEntity seatEntity = SeatEntityBuilder.aSeatEntity().withNumber(1).withRow("A").build();
+        SeatsEntity seatsEntity = SeatsEntityBuilder.aSeatsEntity().withSeat(seatEntity).build();
+        seatsEntityList.add(seatsEntity);
         bookingService.createBooking(viewer, showtimeEntity, seatsEntityList);
         Assert.assertEquals(before + 1L, bookingDao.count());
     }
@@ -66,8 +64,7 @@ public class BookingServiceTest {
     @Test
     public void deleteBooking() {
         long before = bookingDao.count();
-        ViewerEntity viewer = new ViewerEntity();
-        viewer.setUsername("TestViewer");
+        ViewerEntity viewer = viewerService.createViewer("TestViewer");
         viewerDao.save(viewer);
         ShowtimeEntity showtimeEntity = showtimeDao.findById(1).get();
         List<SeatsEntity> seatsEntity = new ArrayList<>();

@@ -14,22 +14,18 @@ public class BookingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @OneToOne
     private ViewerEntity viewer;
-
     @OneToOne
     private ShowtimeEntity showtime;
-
     @OneToMany(mappedBy = "booking")
     private List<SeatsEntity> seats;
 
-    public int getId() {
-        return id;
+    private BookingEntity() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId() {
+        return id;
     }
 
     public ViewerEntity getViewer() {
@@ -54,5 +50,42 @@ public class BookingEntity {
 
     public void setSeats(List<SeatsEntity> seats) {
         this.seats = seats;
+    }
+
+    public static final class BookingEntityBuilder {
+
+        private ViewerEntity viewer;
+        private ShowtimeEntity showtime;
+        private List<SeatsEntity> seats;
+
+        private BookingEntityBuilder() {
+        }
+
+        public static BookingEntityBuilder aBookingEntity() {
+            return new BookingEntityBuilder();
+        }
+
+        public BookingEntityBuilder withViewer(ViewerEntity viewer) {
+            this.viewer = viewer;
+            return this;
+        }
+
+        public BookingEntityBuilder withShowtime(ShowtimeEntity showtime) {
+            this.showtime = showtime;
+            return this;
+        }
+
+        public BookingEntityBuilder withSeats(List<SeatsEntity> seats) {
+            this.seats = seats;
+            return this;
+        }
+
+        public BookingEntity build() {
+            BookingEntity bookingEntity = new BookingEntity();
+            bookingEntity.viewer = viewer;
+            bookingEntity.showtime = showtime;
+            bookingEntity.seats = seats;
+            return bookingEntity;
+        }
     }
 }

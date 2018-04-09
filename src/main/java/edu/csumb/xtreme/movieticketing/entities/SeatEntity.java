@@ -13,6 +13,13 @@ public class SeatEntity {
     private int id;
     private String row;
     private int number;
+    private SeatEntity() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public String getRow() {
         return row;
@@ -28,5 +35,35 @@ public class SeatEntity {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public static final class SeatEntityBuilder {
+
+        private String row;
+        private int number;
+
+        private SeatEntityBuilder() {
+        }
+
+        public static SeatEntityBuilder aSeatEntity() {
+            return new SeatEntityBuilder();
+        }
+
+        public SeatEntityBuilder withRow(String row) {
+            this.row = row;
+            return this;
+        }
+
+        public SeatEntityBuilder withNumber(int number) {
+            this.number = number;
+            return this;
+        }
+
+        public SeatEntity build() {
+            SeatEntity seatEntity = new SeatEntity();
+            seatEntity.row = row;
+            seatEntity.number = number;
+            return seatEntity;
+        }
     }
 }

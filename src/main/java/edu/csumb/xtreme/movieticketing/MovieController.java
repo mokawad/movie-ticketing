@@ -18,17 +18,15 @@ public class MovieController {
     BookingDao bookingDao;
 
 
-    
-@GetMapping("/movie")
-public String movie(
-    @RequestParam(name = "id", required = true, defaultValue = "0") int id,
-    Model model) {
-    model.addAttribute("movie", movieDao.findAll().get(id));
-    //model.addAttribute("bookings", bookingDao.findAll().get(id));
-    //model.addAllAttributes(movieDao);
-    return "movie";
-}
-
+    @GetMapping("/movie")
+    public String movie(
+        @RequestParam(name = "id", required = true, defaultValue = "0") int id,
+        Model model) {
+        model.addAttribute("movie", movieDao.findAll().get(id));
+        //model.addAttribute("bookings", bookingDao.findAll().get(id));
+        //model.addAllAttributes(movieDao);
+        return "movie";
+    }
 
 
 }
