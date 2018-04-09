@@ -28,11 +28,12 @@ public class BookingService {
         bookingDao.deleteById(id);
     }
 
-    public void addSeats(int bookingId) {
-
+    public void addSeats(int bookingId, List<SeatsEntity> seatsToAdd) {
+        BookingEntity bookingEntity = bookingDao.getOne(bookingId);
+        List<SeatsEntity> seats = bookingEntity.getSeats();
+        seatsToAdd.addAll(seats);
+        bookingEntity.setSeats(seatsToAdd);
+        bookingDao.save(bookingEntity);
     }
 
-    public void removeSeats(int bookingId) {
-
-    }
 }
