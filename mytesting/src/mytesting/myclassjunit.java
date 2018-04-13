@@ -12,3 +12,4 @@ public class myclassjunit {
 	}
 
 }
+/** Junit testing**/
