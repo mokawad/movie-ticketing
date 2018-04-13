@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Iteration in Thymeleaf Template Engine!!</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Movies</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Director</th>
+    <th>Genre</th>
+    <th>ReleaseDate</th>
+  </tr>
+  <tr th:each="movie : ${movies}">
+    <td th:text="${movie.getName()}">Name</td>
+    <td th:text="${movie.getDirector()}">Director</td>
+    <td th:text="${movie.getGenre()}">Genre</td>
+    <td th:text="${movie.getReleaseDate()}">ReleaseDate</td>
+  </tr>
+</table>
+<h1>Bookings</h1>
+<table>
+  <tr>
+    <th>Viewer</th>
+    <th>Movie Name</th>
+    <th>Show time</th>
+    <th>Number of seats</th>
+  </tr>
+  <tr th:each="booking : ${bookings}">
+    <td th:text="${booking.getViewer().getUsername()}">Viewer</td>
+    <td th:text="${booking.getShowtime().getMovie().getName()}">Movie Name</td>
+    <td th:text="${booking.getShowtime().getTime()}">Show time</td>
+    <td th:text="${booking.getSeats().size()}">Number of seats</td>
+  </tr>
+</table>
+</body>
+</html>

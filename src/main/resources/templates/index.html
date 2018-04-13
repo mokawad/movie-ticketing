@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <style>
+    body {
+      background-color: white;
+      font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-variant: normal;
+      margin: auto;
+      width: 100%;
+    }
+
+    img {
+      border: 10px solid gray;
+      border-radius: 20px;
+      margin-left: 20px;
+      float: right;
+    }
+
+    .banner {
+      margin: 0px auto;
+      padding: 0;
+      height: 20%;
+      width: 100%;
+      overflow: hidden;
+      border: solid;
+      background-color: black;
+    }
+
+    .logo {
+      font-family: "Impact", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+      font-size: 55px;
+      font-style: normal;
+      font-variant: normal;
+      color: white;
+      text-align: center;
+    }
+
+    .wrapper {
+      font-family: "Verdana", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: bold;
+      color: gray;
+      border: solid;
+      border-color: gray;
+      border-width: 0px 0px 2px 0px;
+      text-align: center;
+    }
+
+    h1 {
+      background-color: white;
+      font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-variant: normal;
+      margin-top: 15px;
+      margin-bottom: 0px;
+      width: 100%;
+    }
+
+  </style>
+
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+     Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Iteration in Thymeleaf Template Engine!!</title>
+</head>
+<body>
+<div class="banner">
+  <div class="logo">
+    <p>CSUMB Moviehouse</p>
+  </div>
+</div>
+<div class="wrapper">
+  <p>Now Playing</p>
+</div>
+<h1 align="center">Pick a Movie!
+
+  <form>
+    <select>
+      <option value="">Select Movie</option>
+      <option th:each="movie : ${nowPlaying}"
+              th:value="${movie.getId()}"
+              th:text="${movie.getName()}"
+      /option>
+    </select>
+    <input type="submit" value="Get Movie Info and showtimes!"/>
+
+  </form>
+  <br/>
+</h1>
+<div class="wrapper">
+  <p>Coming Soon</p>
+</div>
+<h1 align="center">Pick a Movie!
+
+  <form>
+    <select>
+      <option value="">Select Movie</option>
+      <option th:each="movie : ${movies}"
+              th:if="${movie.isComingSoon()}"
+              th:value="${movie.getId()}"
+              th:text="${movie.getName()}"
+      /option>
+    </select>
+    <input type="submit" value="Get Movie Info and showtimes!"/>
+
+  </form>
+  <br/>
+
+</h1>
+</body>
+</html>
