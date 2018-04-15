@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserDao extends JpaRepository<TheaterEntity, Integer> {
+public interface UserDao extends JpaRepository<User, Integer> {
 
 public class User {
 	private static String USER_NAME;
